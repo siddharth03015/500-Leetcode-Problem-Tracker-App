@@ -82,15 +82,40 @@ export function Footer() {
 
           {/* Links */}
           <div className="flex gap-8">
-            {["LinkedIn", "GitHub", "Twitter"].map((link) => (
-              <a
-                key={link}
-                href="#"
+            {["LinkedIn", "GitHub", "Twitter"].map((platform) => (
+              <button
+                key={platform}
+                onClick={(e) => {
+                  e.preventDefault()
+                  let solvedCount = 0
+                  try {
+                    const saved = localStorage.getItem("dsa-solved")
+                    if (saved) {
+                      solvedCount = JSON.parse(saved).length
+                    }
+                  } catch (err) {}
+
+                  const repoUrl = "https://github.com/siddharth03015/500-Leetcode-Problem-Tracker-App"
+                  const text = `I've just reached a milestone: ${solvedCount}/500 top DSA problems solved using the 500 DSA Tracker! 🚀`
+
+                  let shareUrl = ""
+                  if (platform === "LinkedIn") {
+                    shareUrl = `https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(text + "\n\nCheck it out here: " + repoUrl)}`
+                  } else if (platform === "Twitter") {
+                    shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(repoUrl)}`
+                  } else if (platform === "GitHub") {
+                    shareUrl = repoUrl
+                  }
+
+                  if (shareUrl) {
+                    window.open(shareUrl, "_blank", "noopener,noreferrer")
+                  }
+                }}
                 data-cursor-hover
                 className="font-mono text-xs tracking-widest text-muted-foreground hover:text-white transition-colors duration-300"
               >
-                {link}
-              </a>
+                {platform}
+              </button>
             ))}
           </div>
 

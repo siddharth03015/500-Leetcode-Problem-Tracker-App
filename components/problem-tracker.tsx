@@ -68,6 +68,10 @@ export function ProblemTracker() {
         </div>
         
         <div className="md:col-span-3 flex flex-col justify-center gap-4">
+          <div className="flex justify-between items-end mb-1">
+            <span className="text-sm font-mono tracking-widest text-muted-foreground uppercase">Progress</span>
+            <span className="text-xl font-mono text-emerald-400">{progressPercentage}%</span>
+          </div>
           <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
             <motion.div 
               initial={{ width: 0 }}

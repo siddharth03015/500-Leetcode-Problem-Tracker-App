@@ -3,6 +3,7 @@ import { Hero } from "@/components/hero"
 import { About } from "@/components/about"
 import { Works } from "@/components/works"
 import { TechMarquee } from "@/components/tech-marquee"
+import { Community } from "@/components/community"
 import { Footer } from "@/components/footer"
 import { CustomCursor } from "@/components/custom-cursor"
 import { SmoothScroll } from "@/components/smooth-scroll"
@@ -19,6 +20,7 @@ export default function Home() {
         <About />
         <Works />
         <TechMarquee />
+        <Community />
         <Footer />
       </main>
     </SmoothScroll>
